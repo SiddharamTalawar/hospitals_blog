@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+
+
+{% block title %} Create profil {% endblock %}
+
+
+
+
+{% block content %}
+<h1>create your profile here</h1><br>
+<ul>
+    <table>
+        <div class="form-group">
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+
+                <button type="submit" class="btn btn-secondary">create</button>
+            </form>
+
+        </div>
+    </table>
+</ul>
+{% endblock %}

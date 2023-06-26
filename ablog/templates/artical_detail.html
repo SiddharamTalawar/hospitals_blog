@@ -1,0 +1,48 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}   {{post.title}}  {% endblock %}
+
+
+
+
+{% block content  %}
+<h1>{{post.title}}</h1>
+
+<small>By:
+    {% if post.author.frist_name %} 
+        {{ post.author.first_name }} 
+        {{ post.author.last_name }} 
+    {% else %}
+        {{post.author}},
+    {% endif %}
+        {{post.date_created}}
+
+    {% if post.author.profile %}
+
+        Visit:<a href="#">Profile Page</a>
+ 
+    {% endif %}
+   
+<br>
+Category-<a href="{% url 'category_sort' post.category %}">{{post.category}}</a><br>
+
+{%if user.id == post.author.id%}
+<a href="{% url 'update_post' post.pk %}"> (Edit)</a>
+<a href="{%url 'delete_post' post.pk%}">(Delete)</a><br>
+{%endif%}
+</small> 
+
+{% if post.post_image %}
+    <br><img src="{{ post.post_image.url }}" class="img-fluid" width="350" height="200" >
+	{% endif %}
+<br>
+{{post.summary}} <br><br>
+{{post.content}} <br>
+<a href="{% url 'home'%} ">Back</a>
+<br>
+<br>
+
+
+
+
+    {% endblock %}

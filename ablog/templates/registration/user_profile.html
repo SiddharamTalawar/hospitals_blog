@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+
+
+
+{% block title %}
+<title> User Profile.. </title>
+{% endblock %}
+
+
+{% block content  %}
+<h1>User Profile...</h1>
+<br/>
+<ul>
+{% if page_user.profile_pic %}
+      <img src="{{ page_user.profile_pic.url }}" width="350"><br>
+{% endif %}
+
+
+first_name : {{ page_user.Frist_name }} <br>
+last_name : {{ page_user.last_name }}<br>
+email : {{ page_user.email }} <br>
+password : {{ page_user.password }} <br>
+Address : {{ page_user.Address }} <br>
+city : {{ page_user.city }} <br>
+state : {{ page_user.state }} <br>
+pincode : {{ page_user.pincode }} <br>
+</ul>
+
+{% endblock %}

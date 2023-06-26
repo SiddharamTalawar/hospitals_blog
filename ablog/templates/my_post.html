@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+
+{% block title %} my posts {% endblock %}
+
+
+
+{% block content %}
+<h1>My posts</h1>
+<div class="row">
+    <ul>
+        {% for post in my_post %}
+        {% if post.post_image %}
+        <br><img src="{{ post.post_image.url }}" class="img-fluid" width="250" >
+        {% endif %}
+        <li> <a href="{% url  'detail_view' post.pk %}">
+                <h3>{{post.title}}</h3>
+                
+            </a> by Dr. {{post.author}} <br>
+            {% if post.draft == True %} <h4>This is a draft</h4> {% endif %} <br>
+            <a href="{% url 'category_sort' post.category %}"><small>{{post.category}}</small></a> <small>
+                {{post.date_created}}</small><br>
+            {{post.summary|slice:"0:200"}}'...'<br>
+            {%if user.id == post.author.id%}
+            <a href="{% url 'update_post' post.pk %}"> (Edit)</a>
+            <a href="{%url 'delete_post' post.pk%}">(Delete)</a><br>
+            {%endif%}
+            <br>
+            <br>
+        </li>
+
+        {%endfor%}
+    </ul>
+</div>
+
+
+
+
+{% endblock %}
