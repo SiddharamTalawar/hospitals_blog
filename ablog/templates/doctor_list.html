@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+
+{% block title %} doctors list  {% endblock %}
+
+
+
+{% block content %}
+<h1>Please choose a sutaible Doctore for your needs</h1>
+<div class="row">
+    <ul>
+        {% for doctor in object_list %}
+        {% if doctor.profile_pic %}
+        <br><img src="{{ doctor.profile_pic.url }}" class="img-fluid" width="250" >
+        {% endif %}
+        
+        <h3>{{doctor.Frist_name}} {{doctor.last_name}}</h3>
+        <a href="{% url 'book_Appointment' doctor.user.id %}">Book Appointment</a>
+          
+            <br>
+            <br>
+        </li>
+
+        {%endfor%}
+    </ul>
+</div>
+
+
+
+
+{% endblock %}

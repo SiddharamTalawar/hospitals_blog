@@ -1,5 +1,5 @@
 from django  import forms
-from .models import post,Profile
+from .models import post,Profile,Appointment
 
 
 
@@ -26,3 +26,5 @@ class ProfilePage_Form(forms.ModelForm):
 	class Meta:
 		model = Profile
 		exclude = ('user',)
+                
+

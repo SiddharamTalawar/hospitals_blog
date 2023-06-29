@@ -13,6 +13,9 @@ urlpatterns = [
     path('user_profile/<int:pk>',Show_ProfilePage_View.as_view(),name='user_profile'),
     path('edit_profile/<int:pk>',upadte_profile_view.as_view(),name='edit_profile'),
     path('my_post/',my_post_view,name='my_posts'),
+    path('doctors_list/',doctor_list_View.as_view(),name='doctor_list'),
+    path('Appointment/<int:pk>',book_Appointment_view,name='book_Appointment'),
+    path('tokensss',tokens_view,name='tokenss'),
     
     
 

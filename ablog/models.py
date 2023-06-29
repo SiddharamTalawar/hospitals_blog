@@ -50,6 +50,17 @@ class Profile(models.Model):
 	def get_absolute_url(self):
 		return reverse('home')
 
+
+class Appointment(models.Model):
+      Doctor=models.ForeignKey(User, on_delete=models.CASCADE)
+      speciality = models.CharField(max_length=250)
+      Date = models.CharField(max_length=250)
+      start_time = models.CharField(max_length=250)
+      end_time = models.CharField(max_length=250)
+
+      def __str__(self):
+            return str(self.Doctor) + ' on ' + self.Date + ' at ' +self.start_time
+      
 	
 		        
         
